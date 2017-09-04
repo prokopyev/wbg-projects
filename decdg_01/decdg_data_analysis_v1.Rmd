@@ -97,7 +97,6 @@ cbPalette5 <- c("#0072B2", "#56B4E9", "#009E73", "#D55E00",
 ```
 
 ```{r, echo=FALSE}
-
 # 3.2 Create the main figure
 
 # Make sure text annotation and grid libraries are loaded along with ggplot2
@@ -140,10 +139,10 @@ p <- ggplot(data_wdi_2015,aes(SP.DYN.LE00.MA.IN, SP.DYN.LE00.FE.IN, SP.POP.TOTL,
             theme(
             axis.title.x = element_text(size=9.5),
             axis.title.y = element_text(size=9.5)) +
-          # Create text captions for countries with 180M+ populations
+          # Create automatic text captions for top-10 countries by population
             geom_text_repel( 
                     aes(label=ifelse(
-                    SP.POP.TOTL>126000000, # Caption only top-10 countries by population
+                    SP.POP.TOTL>126000000, # Caption if population > 126M
                     as.character(country),'')),
                     size=3.22, color="black", force = 9, 
                     segment.color="#000000", segment.size = 0.25,
@@ -169,7 +168,7 @@ We extracted several insights from the data and its visualization:
 
 - Women do live longer than men everywhere except Swaziland. The country suffers from the lowest life expectancy in the world. The trend with female life expectancy dropping below the male indicator hit a low in 2004 and is potentially related to HIV situation in Swaziland. Explore the time trends further in this [line graph](https://data.worldbank.org/indicator/SP.DYN.LE00.FE.IN?locations=SZ). 
 
-- Low and lower middle income countries are grouped in the lower left quadrant. This proves that people in developing economies live shorter than in rich countries. Interestingly, the gender gap in life expectancy in developing countries is smaller than that of wealthier countries. In very simple terms, if you are poor you will live a shorter life in any case. Being born female would not provide you with a major extension of the length of your life. This contrasts with situation in Russia, an upper middle income country, to be surpassed only by Syria. In these countries the gender differences reach 11-12 years.
+- Low and lower middle income countries are grouped in the lower left quadrant. This proves that people in developing economies live shorter than in rich countries. Interestingly, the gender gap in life expectancy in developing countries is smaller than that of wealthier countries. In very simple terms, if you are poor you will live a shorter life in any case. Being born female would not provide you with a major extension of the length of your life. Among others, this contrasts sharply with situation in Russia, an upper middle income country. The gender differences reach 11+ years there due to alcohol and tobacco policy shortcomings.
 
 - It is unusual to see an upper middle income and a high income country among low income countries at the [55;60] mark. In this case, the two countries with abnormally low life expectancies are South Africa and Equatorial Guinea. The latter is a curious example of a resource curse. It is classified as a high income country due to high GNI per capita caused by the presence of oil resources (read more about groupings of economies [here](https://datahelpdesk.worldbank.org/knowledgebase/articles/378831-why-use-gni-per-capita-to-classify-economies-into)).
 
