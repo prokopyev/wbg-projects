@@ -1,0 +1,228 @@
+---
+title: "DECDG: Data Analysis Exercise"
+author: "Anton Prokopyev"
+date: "September 4, 2017"
+# This code is modified to use css to override max page width
+output:
+  html_document:
+    css: style.css
+---
+## How Life Expectancy Differs Between Wealthy and Developing Countries
+
+Here at The World Bank we are interested in using open data to share insights about economic development. In this report we take a quick look at the how life expectancy differs between rich and poor countries, and display some of the new interactive data discovery tools we have been working on.
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r, results='hide', echo=FALSE, message=FALSE}
+#### 0. Install and launch existing packages and API clients ####
+
+# Specify the packages of interest
+packages = c("WDI", "ggplot2", "dplyr", "ggpubr", "grid", "sqldf", "ggrepel", "plotly")
+
+# Use this function to check if each package is on the local machine
+# if a package is installed, it will be loaded
+# if any are not, the missing package(s) will be installed and loaded
+package.check <- lapply(packages, FUN = function(x) {
+    if (!require(x, character.only = TRUE)) {
+        install.packages(x, dependencies = TRUE)
+        library(x, character.only = TRUE, quietly = TRUE)
+    }
+})
+# Use this command if you need to verify which packages are loaded
+# search() 
+```
+
+```{r, echo=FALSE, results='hide'}
+# 1. Get the data and the metadata
+library(WDI)
+data_wdi <- WDI(indicator=c('SP.DYN.LE00.IN',
+                            'SP.DYN.LE00.MA.IN',
+                            'SP.DYN.LE00.FE.IN',
+                            'SP.POP.TOTL'),
+               country='all', 
+               start=1960, 
+               end=2015,
+               extra=TRUE) # A parameter for metadata
+```
+
+```{r, echo=FALSE}
+# 2. Prepare data for the analysis
+
+# 2.1 Calculate the gender gap
+data_wdi$gender_gap <- data_wdi$SP.DYN.LE00.FE.IN-data_wdi$SP.DYN.LE00.MA.IN
+```
+
+```{r, echo=FALSE, results='hide'}
+# 2.2 Hadling data with 'sqldf' package to demonstrate some SQL skills
+
+# Arrange original data in a shape ready for easy visualization
+library(sqldf)
+data_wdi_2015 <- sqldf('SELECT * 
+                      FROM data_wdi
+                      WHERE year = 2015 
+                      AND region != "Aggregates" 
+                      AND "SP.POP.TOTL" IS NOT NULL
+                      AND gender_gap IS NOT NULL
+                      AND income != "Not classified"
+                     ')
+```
+
+#### Gender differences in life expectancy at birth
+Using the 2015 WDI indicators as the most recent full snapshot of world economy.
+```{r, echo=FALSE, results='hide'}
+# 3 Plotting
+
+# 3.1 Set up some parameters for the figure
+
+# Chose a stable y-axis scale
+plt_ymin <- -0.5
+plt_ymax <- 15
+
+# Create uniform labels
+plt_xlab <- "Years"
+plt_ylab <- "Gender Gap, years"
+
+# Define colorblind-frienly palettes 
+cbPalette <- c("#999999", "#E69F00", "#56B4E9", "#009E73", 
+               "#F0E442", "#0072B2", "#D55E00", "#CC79A7")
+cbPalette2 <- c("#56B4E9", "#009E73", "#F0E442", "#0072B2", 
+                "#D55E00", "#CC79A7", "#999999", "#E69F00")
+cbPalette3 <- c("#F0E442", "#0072B2", "#D55E00", "#CC79A7", 
+                "#999999", "#E69F00", "#56B4E9", "#009E73")
+cbPalette4 <- c("#D55E00", "#CC79A7", "#999999", "#E69F00", 
+                "#56B4E9", "#009E73", "#F0E442", "#0072B2")
+cbPalette5 <- c("#0072B2", "#56B4E9", "#009E73", "#D55E00", 
+                "#E69F00", "#CC79A7", "#F0E442", "#999999")
+```
+
+```{r, echo=FALSE}
+
+# 3.2 Create the main figure
+
+# Make sure text annotation and grid libraries are loaded along with ggplot2
+library(ggplot2)
+library(ggrepel) 
+library(grid)
+
+# Reorder 'levels' for 'income' variable in order to have a logical order in the legend 
+data_wdi_2015$income <- factor(data_wdi_2015$income, 
+                               levels = c("High income: OECD",
+                                          "High income: nonOECD",
+                                          "Upper middle income",
+                                          "Lower middle income",
+                                          "Low income",
+                                          "Aggregates",
+                                          "Not classified"))
+
+# Proceed to plotting
+p <- ggplot(data_wdi_2015,aes(SP.DYN.LE00.MA.IN, SP.DYN.LE00.FE.IN, SP.POP.TOTL, 
+            size = SP.POP.TOTL, colour = factor(income))) +
+          # Set graph type and the point transparency
+            geom_point(alpha = 0.75) +
+          # Adjust bubble sizes, remove a redundant legend
+            scale_size(range = c(0.5, 12), guide = FALSE) +
+          # Switch to square shapes for legend to avoid confusion
+            guides(colour = guide_legend(override.aes = list(size=6, shape=15))) + 
+          # Set legend position and font size
+            theme(legend.position = 'right', legend.text=element_text(size=10)) + 
+          # Select the black and white theme
+            theme_bw() + 
+          # Select a colorblind-friendly palette
+          scale_colour_manual(values=cbPalette5) +
+          # Remove legend title
+            theme(legend.title=element_blank()) + 
+          # X-axis label
+            xlab("Male life expectancy at birth (years)")+
+          # Y-axis label
+            ylab("Female life expectancy at birth (years)") +
+          # Make axis fonts smaller 
+            theme(
+            axis.title.x = element_text(size=9.5),
+            axis.title.y = element_text(size=9.5)) +
+          # Create text captions for countries with 180M+ populations
+            geom_text_repel( 
+                    aes(label=ifelse(
+                    SP.POP.TOTL>126000000, # Caption only top-10 countries by population
+                    as.character(country),'')),
+                    size=3.22, color="black", force = 9, 
+                    segment.color="#000000", segment.size = 0.25,
+                    point.padding = unit(0.6, "lines"),
+                    box.padding = unit(0.5, "lines"),
+                    nudge_y = 1) +
+          # Add a red dotted 'zero-gap' line
+            geom_abline(intercept = 0, colour="red", alpha=0.5, linetype=3)
+          
+          # Print the plot
+          p
+          # Overlay the plot with metadata
+          grid.text("Data Source: WDI, 2015 \nDate Created: 08/30/2017 \nAuthor: Anton Prokopyev, WBG",
+          just = 0, x = 0.8, y = 0.059, # Choosing the position for metadata box
+          gp = gpar(fontsize = 6, col = "black")) 
+```
+
+The red dotted line shows an ideal situation of gender parity, where males and females would have equal life expectancy. It shows a situation where members of both genders of a given country would be expected to live for the same amount of time, e.g. 70 years for males (x-axis) and females (y-axis).
+
+The point size differs to reflect differences in populations of these countries. 
+
+We extracted several insights from the data and its visualization:
+
+- Women do live longer than men everywhere around the world except one exception–Swaziland–which suffers from the lowest life expectancy in the world. The trend with female life expectancy dropping below the male indicator hit a low in 2004, and is potentially related with HIV situation in the country. Explore the time trends further in this [line graph](https://data.worldbank.org/indicator/SP.DYN.LE00.FE.IN?locations=SZ). 
+
+- Low and lower middle income countries are grouped in the lower left quadrant, which proves that people in developing states live shorter than in rich countries. Surprisingly though, the gender gap in life expectancy in developing countries is smaller than that of wealthier countries. The contrast is the starkest in Russia, an upper middle income country where the difference reaches 11+ years, to be surpassed by Syria. In simple terms, if you are poor you will live a short life in any case. Being born female would not provide you with a major extension of the length of your life.
+
+- It is unusual to see an upper middle income and a high income country among low income countries at [55;60] mark. To explore more cases like this we have build an interactive version of the chart. In this case the two countries with abnormally low life expectancies for their income level are South Africa and Equatorial Guinea. The latter is a curious example of a resource curse. It is classified as a high income country due to high GNI per capita caused by presence of oil resources (read more about groupings of economies [here](https://datahelpdesk.worldbank.org/knowledgebase/articles/378831-why-use-gni-per-capita-to-classify-economies-into). 
+
+To explore this and other cases use zoom and panning in the chart below.
+
+```{r, echo=FALSE}
+# 3.3 Create a clickable, interactive version of the same plot
+
+# Load an interactive dataviz library
+library(plotly)
+
+# ! 
+# It is recommended that you use the dev version of ggplot2 with plotly.
+# Install it with: devtools::install_github('hadley/ggplot2')"
+
+# Copy data for dataviz to keep the originals clean
+data_wdi_2015_plotly <- data_wdi_2015
+
+# Rename columns for dataviz purposes
+names(data_wdi_2015_plotly)[names(data_wdi_2015_plotly) == 'SP.DYN.LE00.MA.IN'] <- 'Males'
+names(data_wdi_2015_plotly)[names(data_wdi_2015_plotly) == 'SP.DYN.LE00.FE.IN'] <- 'Females'
+names(data_wdi_2015_plotly)[names(data_wdi_2015_plotly) == 'SP.POP.TOTL'] <- 'Population'
+names(data_wdi_2015_plotly)[names(data_wdi_2015_plotly) == 'income'] <- 'Group'
+names(data_wdi_2015_plotly)[names(data_wdi_2015_plotly) == 'country'] <- 'Country'
+
+p2 <- ggplot(data_wdi_2015_plotly,aes(`Males`, `Females`, 
+            size = `Population`, colour = `Group`, label = `Country`)) +
+              geom_point(alpha = 0.75) +
+          # Adjust bubble sizes, remove a redundant legend
+            scale_size(range = c(0.25, 12), guide = FALSE) +
+          # Set legend position and font size
+            theme(legend.position = 'bottom') + 
+          # Select the black and white theme
+            theme_bw() + 
+          # Select a colorblind-friendly palette
+          scale_colour_manual(values=cbPalette5) +
+          # Remove legend title
+            theme(legend.title=element_blank()) + 
+          # X-axis label
+            xlab("Male life expectancy at birth (years)") +
+          # Y-axis label
+            ylab("Female life expectancy at birth (years)") +
+          # Add a no-gap line
+            geom_abline(intercept = 0, colour="red", alpha=0.5, linetype=3)
+          
+          # Render the visualization with dynamic axis ticks
+          ggplotly(p2, dynamicTicks=TRUE)  
+```  
+<br />  
+
+This information provides important context for anyone working in the economic development industry. Whether an economist or a policymaker, both can put this information to use in the context of their work. Moving forward with this topic, we recommend augmenting this anlysis by looking at life expectancy at age 65, similar to this [paper](http://www.longevitypanel.co.uk/_files/life-expectancy-by-gender.pdf).
+
+The World Bank staff are here to facilitate the access to this information. In future blog posts, we will be updating this dataviz catalogue with new products. If you are interested in exploring development data and downloading it for further analysis, visit [World Bank Data](data.worldbank.org) to learn more.  
+
+Reproducible research: download [RMarkdown file](https://prokopyev.github.io/wbg-projects/decdg_01/decdg_data_analysis_v1.Rmd).  
