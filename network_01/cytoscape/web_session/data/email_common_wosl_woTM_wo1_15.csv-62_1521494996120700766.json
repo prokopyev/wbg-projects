@@ -1329,13 +1329,13 @@
         "shared_name" : "Monica Price Cohen",
         "name" : "Monica Price Cohen",
         "SUID" : 139,
-        "selected" : true
+        "selected" : false
       },
       "position" : {
         "x" : 320.76576628171085,
         "y" : 614.3023522070009
       },
-      "selected" : true
+      "selected" : false
     }, {
       "data" : {
         "id" : "137",
@@ -1854,6 +1854,7 @@
         "name" : "\"Abrahams (interacts with)  Alexei\"",
         "interaction" : "interacts with",
         "SUID" : 390,
+        "BEND_MAP_ID" : 390,
         "selected" : false
       },
       "selected" : false
@@ -1868,6 +1869,7 @@
         "interaction" : "interacts with",
         "weight" : 19,
         "SUID" : 387,
+        "BEND_MAP_ID" : 387,
         "selected" : false
       },
       "selected" : false
@@ -1882,6 +1884,7 @@
         "interaction" : "interacts with",
         "weight" : 23,
         "SUID" : 385,
+        "BEND_MAP_ID" : 385,
         "selected" : false
       },
       "selected" : false
@@ -1896,6 +1899,7 @@
         "interaction" : "interacts with",
         "weight" : 16,
         "SUID" : 374,
+        "BEND_MAP_ID" : 374,
         "selected" : false
       },
       "selected" : false
@@ -1910,6 +1914,7 @@
         "interaction" : "interacts with",
         "weight" : 35,
         "SUID" : 367,
+        "BEND_MAP_ID" : 367,
         "selected" : false
       },
       "selected" : false
@@ -1924,6 +1929,7 @@
         "interaction" : "interacts with",
         "weight" : 76,
         "SUID" : 356,
+        "BEND_MAP_ID" : 356,
         "selected" : false
       },
       "selected" : false
@@ -1938,6 +1944,7 @@
         "interaction" : "interacts with",
         "weight" : 27,
         "SUID" : 351,
+        "BEND_MAP_ID" : 351,
         "selected" : false
       },
       "selected" : false
@@ -1952,6 +1959,7 @@
         "interaction" : "interacts with",
         "weight" : 17,
         "SUID" : 348,
+        "BEND_MAP_ID" : 348,
         "selected" : false
       },
       "selected" : false
@@ -1966,6 +1974,7 @@
         "interaction" : "interacts with",
         "weight" : 37,
         "SUID" : 345,
+        "BEND_MAP_ID" : 345,
         "selected" : false
       },
       "selected" : false
@@ -1980,6 +1989,7 @@
         "interaction" : "interacts with",
         "weight" : 29,
         "SUID" : 342,
+        "BEND_MAP_ID" : 342,
         "selected" : false
       },
       "selected" : false
@@ -1994,6 +2004,7 @@
         "interaction" : "interacts with",
         "weight" : 16,
         "SUID" : 340,
+        "BEND_MAP_ID" : 340,
         "selected" : false
       },
       "selected" : false
@@ -2008,6 +2019,7 @@
         "interaction" : "interacts with",
         "weight" : 18,
         "SUID" : 333,
+        "BEND_MAP_ID" : 333,
         "selected" : false
       },
       "selected" : false
@@ -2022,6 +2034,7 @@
         "interaction" : "interacts with",
         "weight" : 45,
         "SUID" : 330,
+        "BEND_MAP_ID" : 330,
         "selected" : false
       },
       "selected" : false
@@ -2036,6 +2049,7 @@
         "interaction" : "interacts with",
         "weight" : 16,
         "SUID" : 328,
+        "BEND_MAP_ID" : 328,
         "selected" : false
       },
       "selected" : false
@@ -2050,6 +2064,7 @@
         "interaction" : "interacts with",
         "weight" : 16,
         "SUID" : 320,
+        "BEND_MAP_ID" : 320,
         "selected" : false
       },
       "selected" : false
@@ -2064,6 +2079,7 @@
         "interaction" : "interacts with",
         "weight" : 17,
         "SUID" : 314,
+        "BEND_MAP_ID" : 314,
         "selected" : false
       },
       "selected" : false
@@ -2077,6 +2093,7 @@
         "name" : "\"Polomoshnova (interacts with)  Elena (US - Arlington)\"",
         "interaction" : "interacts with",
         "SUID" : 309,
+        "BEND_MAP_ID" : 309,
         "selected" : false
       },
       "selected" : false
@@ -2091,6 +2108,7 @@
         "interaction" : "interacts with",
         "weight" : 24,
         "SUID" : 306,
+        "BEND_MAP_ID" : 306,
         "selected" : false
       },
       "selected" : false
@@ -2105,6 +2123,7 @@
         "interaction" : "interacts with",
         "weight" : 76,
         "SUID" : 304,
+        "BEND_MAP_ID" : 304,
         "selected" : false
       },
       "selected" : false
@@ -2119,6 +2138,7 @@
         "interaction" : "interacts with",
         "weight" : 23,
         "SUID" : 353,
+        "BEND_MAP_ID" : 353,
         "selected" : false
       },
       "selected" : false
@@ -2133,6 +2153,7 @@
         "interaction" : "interacts with",
         "weight" : 25,
         "SUID" : 301,
+        "BEND_MAP_ID" : 301,
         "selected" : false
       },
       "selected" : false
@@ -2147,6 +2168,7 @@
         "interaction" : "interacts with",
         "weight" : 20,
         "SUID" : 291,
+        "BEND_MAP_ID" : 291,
         "selected" : false
       },
       "selected" : false
@@ -2161,6 +2183,7 @@
         "interaction" : "interacts with",
         "weight" : 19,
         "SUID" : 280,
+        "BEND_MAP_ID" : 280,
         "selected" : false
       },
       "selected" : false
@@ -2175,6 +2198,7 @@
         "interaction" : "interacts with",
         "weight" : 17,
         "SUID" : 264,
+        "BEND_MAP_ID" : 264,
         "selected" : false
       },
       "selected" : false
@@ -2189,6 +2213,7 @@
         "interaction" : "interacts with",
         "weight" : 21,
         "SUID" : 260,
+        "BEND_MAP_ID" : 260,
         "selected" : false
       },
       "selected" : false
@@ -2203,6 +2228,7 @@
         "interaction" : "interacts with",
         "weight" : 19,
         "SUID" : 248,
+        "BEND_MAP_ID" : 248,
         "selected" : false
       },
       "selected" : false
@@ -2217,6 +2243,7 @@
         "interaction" : "interacts with",
         "weight" : 26,
         "SUID" : 243,
+        "BEND_MAP_ID" : 243,
         "selected" : false
       },
       "selected" : false
@@ -2231,6 +2258,7 @@
         "interaction" : "interacts with",
         "weight" : 47,
         "SUID" : 324,
+        "BEND_MAP_ID" : 324,
         "selected" : false
       },
       "selected" : false
@@ -2245,6 +2273,7 @@
         "interaction" : "interacts with",
         "weight" : 21,
         "SUID" : 274,
+        "BEND_MAP_ID" : 274,
         "selected" : false
       },
       "selected" : false
@@ -2259,6 +2288,7 @@
         "interaction" : "interacts with",
         "weight" : 20,
         "SUID" : 241,
+        "BEND_MAP_ID" : 241,
         "selected" : false
       },
       "selected" : false
@@ -2273,6 +2303,7 @@
         "interaction" : "interacts with",
         "weight" : 18,
         "SUID" : 357,
+        "BEND_MAP_ID" : 357,
         "selected" : false
       },
       "selected" : false
@@ -2287,6 +2318,7 @@
         "interaction" : "interacts with",
         "weight" : 17,
         "SUID" : 238,
+        "BEND_MAP_ID" : 238,
         "selected" : false
       },
       "selected" : false
@@ -2301,6 +2333,7 @@
         "interaction" : "interacts with",
         "weight" : 22,
         "SUID" : 338,
+        "BEND_MAP_ID" : 338,
         "selected" : false
       },
       "selected" : false
@@ -2315,6 +2348,7 @@
         "interaction" : "interacts with",
         "weight" : 17,
         "SUID" : 273,
+        "BEND_MAP_ID" : 273,
         "selected" : false
       },
       "selected" : false
@@ -2329,6 +2363,7 @@
         "interaction" : "interacts with",
         "weight" : 26,
         "SUID" : 233,
+        "BEND_MAP_ID" : 233,
         "selected" : false
       },
       "selected" : false
@@ -2343,6 +2378,7 @@
         "interaction" : "interacts with",
         "weight" : 39,
         "SUID" : 229,
+        "BEND_MAP_ID" : 229,
         "selected" : false
       },
       "selected" : false
@@ -2357,6 +2393,7 @@
         "interaction" : "interacts with",
         "weight" : 23,
         "SUID" : 227,
+        "BEND_MAP_ID" : 227,
         "selected" : false
       },
       "selected" : false
@@ -2371,6 +2408,7 @@
         "interaction" : "interacts with",
         "weight" : 21,
         "SUID" : 224,
+        "BEND_MAP_ID" : 224,
         "selected" : false
       },
       "selected" : false
@@ -2385,6 +2423,7 @@
         "interaction" : "interacts with",
         "weight" : 16,
         "SUID" : 216,
+        "BEND_MAP_ID" : 216,
         "selected" : false
       },
       "selected" : false
@@ -2399,6 +2438,7 @@
         "interaction" : "interacts with",
         "weight" : 59,
         "SUID" : 369,
+        "BEND_MAP_ID" : 369,
         "selected" : false
       },
       "selected" : false
@@ -2413,6 +2453,7 @@
         "interaction" : "interacts with",
         "weight" : 37,
         "SUID" : 360,
+        "BEND_MAP_ID" : 360,
         "selected" : false
       },
       "selected" : false
@@ -2427,6 +2468,7 @@
         "interaction" : "interacts with",
         "weight" : 40,
         "SUID" : 311,
+        "BEND_MAP_ID" : 311,
         "selected" : false
       },
       "selected" : false
@@ -2441,6 +2483,7 @@
         "interaction" : "interacts with",
         "weight" : 35,
         "SUID" : 296,
+        "BEND_MAP_ID" : 296,
         "selected" : false
       },
       "selected" : false
@@ -2455,6 +2498,7 @@
         "interaction" : "interacts with",
         "weight" : 20,
         "SUID" : 261,
+        "BEND_MAP_ID" : 261,
         "selected" : false
       },
       "selected" : false
@@ -2469,6 +2513,7 @@
         "interaction" : "interacts with",
         "weight" : 79,
         "SUID" : 236,
+        "BEND_MAP_ID" : 236,
         "selected" : false
       },
       "selected" : false
@@ -2483,6 +2528,7 @@
         "interaction" : "interacts with",
         "weight" : 17,
         "SUID" : 234,
+        "BEND_MAP_ID" : 234,
         "selected" : false
       },
       "selected" : false
@@ -2497,6 +2543,7 @@
         "interaction" : "interacts with",
         "weight" : 34,
         "SUID" : 202,
+        "BEND_MAP_ID" : 202,
         "selected" : false
       },
       "selected" : false
@@ -2511,6 +2558,7 @@
         "interaction" : "interacts with",
         "weight" : 23,
         "SUID" : 199,
+        "BEND_MAP_ID" : 199,
         "selected" : false
       },
       "selected" : false
@@ -2525,6 +2573,7 @@
         "interaction" : "interacts with",
         "weight" : 23,
         "SUID" : 266,
+        "BEND_MAP_ID" : 266,
         "selected" : false
       },
       "selected" : false
@@ -2539,6 +2588,7 @@
         "interaction" : "interacts with",
         "weight" : 25,
         "SUID" : 217,
+        "BEND_MAP_ID" : 217,
         "selected" : false
       },
       "selected" : false
@@ -2553,6 +2603,7 @@
         "interaction" : "interacts with",
         "weight" : 68,
         "SUID" : 188,
+        "BEND_MAP_ID" : 188,
         "selected" : false
       },
       "selected" : false
@@ -2567,6 +2618,7 @@
         "interaction" : "interacts with",
         "weight" : 45,
         "SUID" : 184,
+        "BEND_MAP_ID" : 184,
         "selected" : false
       },
       "selected" : false
@@ -2581,6 +2633,7 @@
         "interaction" : "interacts with",
         "weight" : 18,
         "SUID" : 195,
+        "BEND_MAP_ID" : 195,
         "selected" : false
       },
       "selected" : false
@@ -2595,6 +2648,7 @@
         "interaction" : "interacts with",
         "weight" : 16,
         "SUID" : 181,
+        "BEND_MAP_ID" : 181,
         "selected" : false
       },
       "selected" : false
@@ -2609,6 +2663,7 @@
         "interaction" : "interacts with",
         "weight" : 20,
         "SUID" : 179,
+        "BEND_MAP_ID" : 179,
         "selected" : false
       },
       "selected" : false
@@ -2623,6 +2678,7 @@
         "interaction" : "interacts with",
         "weight" : 49,
         "SUID" : 176,
+        "BEND_MAP_ID" : 176,
         "selected" : false
       },
       "selected" : false
@@ -2637,6 +2693,7 @@
         "interaction" : "interacts with",
         "weight" : 20,
         "SUID" : 334,
+        "BEND_MAP_ID" : 334,
         "selected" : false
       },
       "selected" : false
@@ -2651,6 +2708,7 @@
         "interaction" : "interacts with",
         "weight" : 32,
         "SUID" : 167,
+        "BEND_MAP_ID" : 167,
         "selected" : false
       },
       "selected" : false
@@ -2665,6 +2723,7 @@
         "interaction" : "interacts with",
         "weight" : 24,
         "SUID" : 162,
+        "BEND_MAP_ID" : 162,
         "selected" : false
       },
       "selected" : false
@@ -2679,6 +2738,7 @@
         "interaction" : "interacts with",
         "weight" : 21,
         "SUID" : 221,
+        "BEND_MAP_ID" : 221,
         "selected" : false
       },
       "selected" : false
@@ -2693,6 +2753,7 @@
         "interaction" : "interacts with",
         "weight" : 18,
         "SUID" : 258,
+        "BEND_MAP_ID" : 258,
         "selected" : false
       },
       "selected" : false
@@ -2707,6 +2768,7 @@
         "interaction" : "interacts with",
         "weight" : 20,
         "SUID" : 156,
+        "BEND_MAP_ID" : 156,
         "selected" : false
       },
       "selected" : false
@@ -2721,6 +2783,7 @@
         "interaction" : "interacts with",
         "weight" : 18,
         "SUID" : 153,
+        "BEND_MAP_ID" : 153,
         "selected" : false
       },
       "selected" : false
@@ -2735,6 +2798,7 @@
         "interaction" : "interacts with",
         "weight" : 58,
         "SUID" : 359,
+        "BEND_MAP_ID" : 359,
         "selected" : false
       },
       "selected" : false
@@ -2749,6 +2813,7 @@
         "interaction" : "interacts with",
         "weight" : 20,
         "SUID" : 239,
+        "BEND_MAP_ID" : 239,
         "selected" : false
       },
       "selected" : false
@@ -2763,6 +2828,7 @@
         "interaction" : "interacts with",
         "weight" : 21,
         "SUID" : 150,
+        "BEND_MAP_ID" : 150,
         "selected" : false
       },
       "selected" : false
@@ -2777,6 +2843,7 @@
         "interaction" : "interacts with",
         "weight" : 29,
         "SUID" : 382,
+        "BEND_MAP_ID" : 382,
         "selected" : false
       },
       "selected" : false
@@ -2791,6 +2858,7 @@
         "interaction" : "interacts with",
         "weight" : 29,
         "SUID" : 146,
+        "BEND_MAP_ID" : 146,
         "selected" : false
       },
       "selected" : false
@@ -2805,6 +2873,7 @@
         "interaction" : "interacts with",
         "weight" : 16,
         "SUID" : 381,
+        "BEND_MAP_ID" : 381,
         "selected" : false
       },
       "selected" : false
@@ -2819,6 +2888,7 @@
         "interaction" : "interacts with",
         "weight" : 16,
         "SUID" : 343,
+        "BEND_MAP_ID" : 343,
         "selected" : false
       },
       "selected" : false
@@ -2833,6 +2903,7 @@
         "interaction" : "interacts with",
         "weight" : 16,
         "SUID" : 315,
+        "BEND_MAP_ID" : 315,
         "selected" : false
       },
       "selected" : false
@@ -2847,6 +2918,7 @@
         "interaction" : "interacts with",
         "weight" : 23,
         "SUID" : 219,
+        "BEND_MAP_ID" : 219,
         "selected" : false
       },
       "selected" : false
@@ -2861,6 +2933,7 @@
         "interaction" : "interacts with",
         "weight" : 18,
         "SUID" : 192,
+        "BEND_MAP_ID" : 192,
         "selected" : false
       },
       "selected" : false
@@ -2875,6 +2948,7 @@
         "interaction" : "interacts with",
         "weight" : 115,
         "SUID" : 173,
+        "BEND_MAP_ID" : 173,
         "selected" : false
       },
       "selected" : false
@@ -2889,6 +2963,7 @@
         "interaction" : "interacts with",
         "weight" : 32,
         "SUID" : 144,
+        "BEND_MAP_ID" : 144,
         "selected" : false
       },
       "selected" : false
@@ -2903,6 +2978,7 @@
         "interaction" : "interacts with",
         "weight" : 16,
         "SUID" : 142,
+        "BEND_MAP_ID" : 142,
         "selected" : false
       },
       "selected" : false
@@ -2917,6 +2993,7 @@
         "interaction" : "interacts with",
         "weight" : 18,
         "SUID" : 272,
+        "BEND_MAP_ID" : 272,
         "selected" : false
       },
       "selected" : false
@@ -2931,6 +3008,7 @@
         "interaction" : "interacts with",
         "weight" : 54,
         "SUID" : 140,
+        "BEND_MAP_ID" : 140,
         "selected" : false
       },
       "selected" : false
@@ -2945,6 +3023,7 @@
         "interaction" : "interacts with",
         "weight" : 16,
         "SUID" : 255,
+        "BEND_MAP_ID" : 255,
         "selected" : false
       },
       "selected" : false
@@ -2959,6 +3038,7 @@
         "interaction" : "interacts with",
         "weight" : 31,
         "SUID" : 371,
+        "BEND_MAP_ID" : 371,
         "selected" : false
       },
       "selected" : false
@@ -2973,6 +3053,7 @@
         "interaction" : "interacts with",
         "weight" : 35,
         "SUID" : 282,
+        "BEND_MAP_ID" : 282,
         "selected" : false
       },
       "selected" : false
@@ -2987,6 +3068,7 @@
         "interaction" : "interacts with",
         "weight" : 16,
         "SUID" : 136,
+        "BEND_MAP_ID" : 136,
         "selected" : false
       },
       "selected" : false
@@ -3001,6 +3083,7 @@
         "interaction" : "interacts with",
         "weight" : 28,
         "SUID" : 182,
+        "BEND_MAP_ID" : 182,
         "selected" : false
       },
       "selected" : false
@@ -3015,6 +3098,7 @@
         "interaction" : "interacts with",
         "weight" : 18,
         "SUID" : 129,
+        "BEND_MAP_ID" : 129,
         "selected" : false
       },
       "selected" : false
@@ -3028,6 +3112,7 @@
         "name" : "\"Kim (interacts with)  Dale (US - Arlington)\"",
         "interaction" : "interacts with",
         "SUID" : 154,
+        "BEND_MAP_ID" : 154,
         "selected" : false
       },
       "selected" : false
@@ -3041,6 +3126,7 @@
         "name" : "\"Kim (interacts with)  Dale (US - Arlington)\"",
         "interaction" : "interacts with",
         "SUID" : 125,
+        "BEND_MAP_ID" : 125,
         "selected" : false
       },
       "selected" : false
@@ -3055,6 +3141,7 @@
         "interaction" : "interacts with",
         "weight" : 20,
         "SUID" : 376,
+        "BEND_MAP_ID" : 376,
         "selected" : false
       },
       "selected" : false
@@ -3069,6 +3156,7 @@
         "interaction" : "interacts with",
         "weight" : 26,
         "SUID" : 370,
+        "BEND_MAP_ID" : 370,
         "selected" : false
       },
       "selected" : false
@@ -3083,6 +3171,7 @@
         "interaction" : "interacts with",
         "weight" : 18,
         "SUID" : 362,
+        "BEND_MAP_ID" : 362,
         "selected" : false
       },
       "selected" : false
@@ -3097,6 +3186,7 @@
         "interaction" : "interacts with",
         "weight" : 17,
         "SUID" : 322,
+        "BEND_MAP_ID" : 322,
         "selected" : false
       },
       "selected" : false
@@ -3111,6 +3201,7 @@
         "interaction" : "interacts with",
         "weight" : 99,
         "SUID" : 292,
+        "BEND_MAP_ID" : 292,
         "selected" : false
       },
       "selected" : false
@@ -3125,6 +3216,7 @@
         "interaction" : "interacts with",
         "weight" : 41,
         "SUID" : 281,
+        "BEND_MAP_ID" : 281,
         "selected" : false
       },
       "selected" : false
@@ -3139,6 +3231,7 @@
         "interaction" : "interacts with",
         "weight" : 16,
         "SUID" : 197,
+        "BEND_MAP_ID" : 197,
         "selected" : false
       },
       "selected" : false
@@ -3153,6 +3246,7 @@
         "interaction" : "interacts with",
         "weight" : 21,
         "SUID" : 218,
+        "BEND_MAP_ID" : 218,
         "selected" : false
       },
       "selected" : false
@@ -3167,6 +3261,7 @@
         "interaction" : "interacts with",
         "weight" : 35,
         "SUID" : 120,
+        "BEND_MAP_ID" : 120,
         "selected" : false
       },
       "selected" : false
@@ -3181,6 +3276,7 @@
         "interaction" : "interacts with",
         "weight" : 30,
         "SUID" : 163,
+        "BEND_MAP_ID" : 163,
         "selected" : false
       },
       "selected" : false
@@ -3195,6 +3291,7 @@
         "interaction" : "interacts with",
         "weight" : 26,
         "SUID" : 372,
+        "BEND_MAP_ID" : 372,
         "selected" : false
       },
       "selected" : false
@@ -3209,6 +3306,7 @@
         "interaction" : "interacts with",
         "weight" : 17,
         "SUID" : 250,
+        "BEND_MAP_ID" : 250,
         "selected" : false
       },
       "selected" : false
@@ -3223,6 +3321,7 @@
         "interaction" : "interacts with",
         "weight" : 22,
         "SUID" : 112,
+        "BEND_MAP_ID" : 112,
         "selected" : false
       },
       "selected" : false
@@ -3237,6 +3336,7 @@
         "interaction" : "interacts with",
         "weight" : 51,
         "SUID" : 284,
+        "BEND_MAP_ID" : 284,
         "selected" : false
       },
       "selected" : false
@@ -3251,6 +3351,7 @@
         "interaction" : "interacts with",
         "weight" : 161,
         "SUID" : 365,
+        "BEND_MAP_ID" : 365,
         "selected" : false
       },
       "selected" : false
@@ -3265,6 +3366,7 @@
         "interaction" : "interacts with",
         "weight" : 21,
         "SUID" : 364,
+        "BEND_MAP_ID" : 364,
         "selected" : false
       },
       "selected" : false
@@ -3279,6 +3381,7 @@
         "interaction" : "interacts with",
         "weight" : 63,
         "SUID" : 321,
+        "BEND_MAP_ID" : 321,
         "selected" : false
       },
       "selected" : false
@@ -3293,6 +3396,7 @@
         "interaction" : "interacts with",
         "weight" : 42,
         "SUID" : 297,
+        "BEND_MAP_ID" : 297,
         "selected" : false
       },
       "selected" : false
@@ -3307,6 +3411,7 @@
         "interaction" : "interacts with",
         "weight" : 18,
         "SUID" : 287,
+        "BEND_MAP_ID" : 287,
         "selected" : false
       },
       "selected" : false
@@ -3321,6 +3426,7 @@
         "interaction" : "interacts with",
         "weight" : 64,
         "SUID" : 283,
+        "BEND_MAP_ID" : 283,
         "selected" : false
       },
       "selected" : false
@@ -3335,6 +3441,7 @@
         "interaction" : "interacts with",
         "weight" : 26,
         "SUID" : 275,
+        "BEND_MAP_ID" : 275,
         "selected" : false
       },
       "selected" : false
@@ -3349,6 +3456,7 @@
         "interaction" : "interacts with",
         "weight" : 17,
         "SUID" : 270,
+        "BEND_MAP_ID" : 270,
         "selected" : false
       },
       "selected" : false
@@ -3363,6 +3471,7 @@
         "interaction" : "interacts with",
         "weight" : 22,
         "SUID" : 265,
+        "BEND_MAP_ID" : 265,
         "selected" : false
       },
       "selected" : false
@@ -3377,6 +3486,7 @@
         "interaction" : "interacts with",
         "weight" : 48,
         "SUID" : 262,
+        "BEND_MAP_ID" : 262,
         "selected" : false
       },
       "selected" : false
@@ -3391,6 +3501,7 @@
         "interaction" : "interacts with",
         "weight" : 21,
         "SUID" : 254,
+        "BEND_MAP_ID" : 254,
         "selected" : false
       },
       "selected" : false
@@ -3405,6 +3516,7 @@
         "interaction" : "interacts with",
         "weight" : 18,
         "SUID" : 252,
+        "BEND_MAP_ID" : 252,
         "selected" : false
       },
       "selected" : false
@@ -3419,6 +3531,7 @@
         "interaction" : "interacts with",
         "weight" : 92,
         "SUID" : 214,
+        "BEND_MAP_ID" : 214,
         "selected" : false
       },
       "selected" : false
@@ -3433,6 +3546,7 @@
         "interaction" : "interacts with",
         "weight" : 27,
         "SUID" : 213,
+        "BEND_MAP_ID" : 213,
         "selected" : false
       },
       "selected" : false
@@ -3447,6 +3561,7 @@
         "interaction" : "interacts with",
         "weight" : 49,
         "SUID" : 209,
+        "BEND_MAP_ID" : 209,
         "selected" : false
       },
       "selected" : false
@@ -3461,6 +3576,7 @@
         "interaction" : "interacts with",
         "weight" : 25,
         "SUID" : 204,
+        "BEND_MAP_ID" : 204,
         "selected" : false
       },
       "selected" : false
@@ -3475,6 +3591,7 @@
         "interaction" : "interacts with",
         "weight" : 18,
         "SUID" : 193,
+        "BEND_MAP_ID" : 193,
         "selected" : false
       },
       "selected" : false
@@ -3489,6 +3606,7 @@
         "interaction" : "interacts with",
         "weight" : 55,
         "SUID" : 172,
+        "BEND_MAP_ID" : 172,
         "selected" : false
       },
       "selected" : false
@@ -3503,6 +3621,7 @@
         "interaction" : "interacts with",
         "weight" : 16,
         "SUID" : 170,
+        "BEND_MAP_ID" : 170,
         "selected" : false
       },
       "selected" : false
@@ -3517,6 +3636,7 @@
         "interaction" : "interacts with",
         "weight" : 50,
         "SUID" : 159,
+        "BEND_MAP_ID" : 159,
         "selected" : false
       },
       "selected" : false
@@ -3531,6 +3651,7 @@
         "interaction" : "interacts with",
         "weight" : 38,
         "SUID" : 138,
+        "BEND_MAP_ID" : 138,
         "selected" : false
       },
       "selected" : false
@@ -3545,6 +3666,7 @@
         "interaction" : "interacts with",
         "weight" : 41,
         "SUID" : 133,
+        "BEND_MAP_ID" : 133,
         "selected" : false
       },
       "selected" : false
@@ -3559,6 +3681,7 @@
         "interaction" : "interacts with",
         "weight" : 124,
         "SUID" : 126,
+        "BEND_MAP_ID" : 126,
         "selected" : false
       },
       "selected" : false
@@ -3573,6 +3696,7 @@
         "interaction" : "interacts with",
         "weight" : 56,
         "SUID" : 117,
+        "BEND_MAP_ID" : 117,
         "selected" : false
       },
       "selected" : false
@@ -3587,6 +3711,7 @@
         "interaction" : "interacts with",
         "weight" : 18,
         "SUID" : 110,
+        "BEND_MAP_ID" : 110,
         "selected" : false
       },
       "selected" : false
@@ -3601,6 +3726,7 @@
         "interaction" : "interacts with",
         "weight" : 17,
         "SUID" : 107,
+        "BEND_MAP_ID" : 107,
         "selected" : false
       },
       "selected" : false
@@ -3615,6 +3741,7 @@
         "interaction" : "interacts with",
         "weight" : 19,
         "SUID" : 336,
+        "BEND_MAP_ID" : 336,
         "selected" : false
       },
       "selected" : false
@@ -3629,6 +3756,7 @@
         "interaction" : "interacts with",
         "weight" : 16,
         "SUID" : 147,
+        "BEND_MAP_ID" : 147,
         "selected" : false
       },
       "selected" : false
@@ -3643,6 +3771,7 @@
         "interaction" : "interacts with",
         "weight" : 49,
         "SUID" : 377,
+        "BEND_MAP_ID" : 377,
         "selected" : false
       },
       "selected" : false
@@ -3657,6 +3786,7 @@
         "interaction" : "interacts with",
         "weight" : 16,
         "SUID" : 168,
+        "BEND_MAP_ID" : 168,
         "selected" : false
       },
       "selected" : false
@@ -3671,6 +3801,7 @@
         "interaction" : "interacts with",
         "weight" : 30,
         "SUID" : 102,
+        "BEND_MAP_ID" : 102,
         "selected" : false
       },
       "selected" : false
@@ -3685,6 +3816,7 @@
         "interaction" : "interacts with",
         "weight" : 28,
         "SUID" : 118,
+        "BEND_MAP_ID" : 118,
         "selected" : false
       },
       "selected" : false
@@ -3699,6 +3831,7 @@
         "interaction" : "interacts with",
         "weight" : 16,
         "SUID" : 100,
+        "BEND_MAP_ID" : 100,
         "selected" : false
       },
       "selected" : false
@@ -3713,6 +3846,7 @@
         "interaction" : "interacts with",
         "weight" : 17,
         "SUID" : 97,
+        "BEND_MAP_ID" : 97,
         "selected" : false
       },
       "selected" : false
@@ -3727,6 +3861,7 @@
         "interaction" : "interacts with",
         "weight" : 29,
         "SUID" : 94,
+        "BEND_MAP_ID" : 94,
         "selected" : false
       },
       "selected" : false
@@ -3741,6 +3876,7 @@
         "interaction" : "interacts with",
         "weight" : 38,
         "SUID" : 378,
+        "BEND_MAP_ID" : 378,
         "selected" : false
       },
       "selected" : false
@@ -3755,6 +3891,7 @@
         "interaction" : "interacts with",
         "weight" : 16,
         "SUID" : 278,
+        "BEND_MAP_ID" : 278,
         "selected" : false
       },
       "selected" : false
@@ -3769,6 +3906,7 @@
         "interaction" : "interacts with",
         "weight" : 20,
         "SUID" : 256,
+        "BEND_MAP_ID" : 256,
         "selected" : false
       },
       "selected" : false
@@ -3783,6 +3921,7 @@
         "interaction" : "interacts with",
         "weight" : 54,
         "SUID" : 379,
+        "BEND_MAP_ID" : 379,
         "selected" : false
       },
       "selected" : false
@@ -3797,6 +3936,7 @@
         "interaction" : "interacts with",
         "weight" : 24,
         "SUID" : 358,
+        "BEND_MAP_ID" : 358,
         "selected" : false
       },
       "selected" : false
@@ -3811,6 +3951,7 @@
         "interaction" : "interacts with",
         "weight" : 46,
         "SUID" : 349,
+        "BEND_MAP_ID" : 349,
         "selected" : false
       },
       "selected" : false
@@ -3825,6 +3966,7 @@
         "interaction" : "interacts with",
         "weight" : 19,
         "SUID" : 331,
+        "BEND_MAP_ID" : 331,
         "selected" : false
       },
       "selected" : false
@@ -3839,6 +3981,7 @@
         "interaction" : "interacts with",
         "weight" : 143,
         "SUID" : 323,
+        "BEND_MAP_ID" : 323,
         "selected" : false
       },
       "selected" : false
@@ -3853,6 +3996,7 @@
         "interaction" : "interacts with",
         "weight" : 21,
         "SUID" : 298,
+        "BEND_MAP_ID" : 298,
         "selected" : false
       },
       "selected" : false
@@ -3867,6 +4011,7 @@
         "interaction" : "interacts with",
         "weight" : 19,
         "SUID" : 294,
+        "BEND_MAP_ID" : 294,
         "selected" : false
       },
       "selected" : false
@@ -3881,6 +4026,7 @@
         "interaction" : "interacts with",
         "weight" : 24,
         "SUID" : 285,
+        "BEND_MAP_ID" : 285,
         "selected" : false
       },
       "selected" : false
@@ -3895,6 +4041,7 @@
         "interaction" : "interacts with",
         "weight" : 26,
         "SUID" : 268,
+        "BEND_MAP_ID" : 268,
         "selected" : false
       },
       "selected" : false
@@ -3909,6 +4056,7 @@
         "interaction" : "interacts with",
         "weight" : 28,
         "SUID" : 257,
+        "BEND_MAP_ID" : 257,
         "selected" : false
       },
       "selected" : false
@@ -3923,6 +4071,7 @@
         "interaction" : "interacts with",
         "weight" : 21,
         "SUID" : 245,
+        "BEND_MAP_ID" : 245,
         "selected" : false
       },
       "selected" : false
@@ -3937,6 +4086,7 @@
         "interaction" : "interacts with",
         "weight" : 20,
         "SUID" : 211,
+        "BEND_MAP_ID" : 211,
         "selected" : false
       },
       "selected" : false
@@ -3951,6 +4101,7 @@
         "interaction" : "interacts with",
         "weight" : 31,
         "SUID" : 206,
+        "BEND_MAP_ID" : 206,
         "selected" : false
       },
       "selected" : false
@@ -3965,6 +4116,7 @@
         "interaction" : "interacts with",
         "weight" : 20,
         "SUID" : 158,
+        "BEND_MAP_ID" : 158,
         "selected" : false
       },
       "selected" : false
@@ -3979,6 +4131,7 @@
         "interaction" : "interacts with",
         "weight" : 75,
         "SUID" : 122,
+        "BEND_MAP_ID" : 122,
         "selected" : false
       },
       "selected" : false
@@ -3993,6 +4146,7 @@
         "interaction" : "interacts with",
         "weight" : 40,
         "SUID" : 104,
+        "BEND_MAP_ID" : 104,
         "selected" : false
       },
       "selected" : false
@@ -4007,6 +4161,7 @@
         "interaction" : "interacts with",
         "weight" : 19,
         "SUID" : 91,
+        "BEND_MAP_ID" : 91,
         "selected" : false
       },
       "selected" : false
@@ -4021,6 +4176,7 @@
         "interaction" : "interacts with",
         "weight" : 81,
         "SUID" : 89,
+        "BEND_MAP_ID" : 89,
         "selected" : false
       },
       "selected" : false
@@ -4035,6 +4191,7 @@
         "interaction" : "interacts with",
         "weight" : 28,
         "SUID" : 289,
+        "BEND_MAP_ID" : 289,
         "selected" : false
       },
       "selected" : false
@@ -4049,6 +4206,7 @@
         "interaction" : "interacts with",
         "weight" : 56,
         "SUID" : 208,
+        "BEND_MAP_ID" : 208,
         "selected" : false
       },
       "selected" : false
@@ -4063,6 +4221,7 @@
         "interaction" : "interacts with",
         "weight" : 28,
         "SUID" : 86,
+        "BEND_MAP_ID" : 86,
         "selected" : false
       },
       "selected" : false
@@ -4077,6 +4236,7 @@
         "interaction" : "interacts with",
         "weight" : 16,
         "SUID" : 186,
+        "BEND_MAP_ID" : 186,
         "selected" : false
       },
       "selected" : false
@@ -4091,6 +4251,7 @@
         "interaction" : "interacts with",
         "weight" : 18,
         "SUID" : 131,
+        "BEND_MAP_ID" : 131,
         "selected" : false
       },
       "selected" : false
@@ -4105,6 +4266,7 @@
         "interaction" : "interacts with",
         "weight" : 24,
         "SUID" : 83,
+        "BEND_MAP_ID" : 83,
         "selected" : false
       },
       "selected" : false
@@ -4119,6 +4281,7 @@
         "interaction" : "interacts with",
         "weight" : 343,
         "SUID" : 368,
+        "BEND_MAP_ID" : 368,
         "selected" : false
       },
       "selected" : false
@@ -4133,6 +4296,7 @@
         "interaction" : "interacts with",
         "weight" : 22,
         "SUID" : 317,
+        "BEND_MAP_ID" : 317,
         "selected" : false
       },
       "selected" : false
@@ -4147,6 +4311,7 @@
         "interaction" : "interacts with",
         "weight" : 34,
         "SUID" : 230,
+        "BEND_MAP_ID" : 230,
         "selected" : false
       },
       "selected" : false
@@ -4161,6 +4326,7 @@
         "interaction" : "interacts with",
         "weight" : 19,
         "SUID" : 225,
+        "BEND_MAP_ID" : 225,
         "selected" : false
       },
       "selected" : false
@@ -4175,6 +4341,7 @@
         "interaction" : "interacts with",
         "weight" : 18,
         "SUID" : 220,
+        "BEND_MAP_ID" : 220,
         "selected" : false
       },
       "selected" : false
@@ -4189,6 +4356,7 @@
         "interaction" : "interacts with",
         "weight" : 21,
         "SUID" : 164,
+        "BEND_MAP_ID" : 164,
         "selected" : false
       },
       "selected" : false
@@ -4203,6 +4371,7 @@
         "interaction" : "interacts with",
         "weight" : 58,
         "SUID" : 114,
+        "BEND_MAP_ID" : 114,
         "selected" : false
       },
       "selected" : false
@@ -4217,6 +4386,7 @@
         "interaction" : "interacts with",
         "weight" : 122,
         "SUID" : 80,
+        "BEND_MAP_ID" : 80,
         "selected" : false
       },
       "selected" : false
@@ -4231,6 +4401,7 @@
         "interaction" : "interacts with",
         "weight" : 22,
         "SUID" : 276,
+        "BEND_MAP_ID" : 276,
         "selected" : false
       },
       "selected" : false
@@ -4245,6 +4416,7 @@
         "interaction" : "interacts with",
         "weight" : 82,
         "SUID" : 171,
+        "BEND_MAP_ID" : 171,
         "selected" : false
       },
       "selected" : false
@@ -4259,6 +4431,7 @@
         "interaction" : "interacts with",
         "weight" : 43,
         "SUID" : 165,
+        "BEND_MAP_ID" : 165,
         "selected" : false
       },
       "selected" : false
@@ -4273,6 +4446,7 @@
         "interaction" : "interacts with",
         "weight" : 16,
         "SUID" : 116,
+        "BEND_MAP_ID" : 116,
         "selected" : false
       },
       "selected" : false
@@ -4287,6 +4461,7 @@
         "interaction" : "interacts with",
         "weight" : 20,
         "SUID" : 77,
+        "BEND_MAP_ID" : 77,
         "selected" : false
       },
       "selected" : false
@@ -4301,6 +4476,7 @@
         "interaction" : "interacts with",
         "weight" : 24,
         "SUID" : 325,
+        "BEND_MAP_ID" : 325,
         "selected" : false
       },
       "selected" : false
@@ -4315,6 +4491,7 @@
         "interaction" : "interacts with",
         "weight" : 16,
         "SUID" : 190,
+        "BEND_MAP_ID" : 190,
         "selected" : false
       },
       "selected" : false
@@ -4329,6 +4506,7 @@
         "interaction" : "interacts with",
         "weight" : 16,
         "SUID" : 74,
+        "BEND_MAP_ID" : 74,
         "selected" : false
       },
       "selected" : false
