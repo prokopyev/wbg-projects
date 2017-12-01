@@ -167,3 +167,137 @@ ggplot(as.data.frame(Titanic),
   coord_flip() +
   ggtitle("Titanic survival by class and sex")
 ```
+
+#####################################
+
+```{r}
+
+chisq_test_risk_reg_exp <- chisq.test(conting_risk_reg)$expected
+chisq_test_risk_reg_exp
+conting_risk_reg
+
+library(corrplot)
+corrplot(chisq_test_risk_reg$residuals, is.cor = FALSE)
+# Visualization of Pearson residuals. For a given cell, the size of the circle is proportional to the amount of the cell contribution.
+
+contrib <- 100*chisq_test_risk_reg$residuals^2/chisq_test_risk_reg$statistic
+corrplot(contrib, is.cor = FALSE)
+
+# 
+# It can be seen that:
+# 
+# The column “Wife” is strongly associated with Laundry, Main_meal, Dinner
+# The column “Husband” is strongly associated with the row Repairs
+# The column jointly is frequently associated with the row Holidays
+# From the image above, it can be seen that the most contributing cells to the Chi-square are Wife/Laundry (7.74%), Wife/Main_meal (4.98%), Husband/Repairs (21.9%), Jointly/Holidays (12.44%).
+# 
+# These cells contribute about 47.06% to the total Chi-square score and thus account for most of the difference between expected and observed values.
+# 
+# This confirms the earlier visual interpretation of the data. As stated earlier, visual interpretation may be complex when the contingency table is very large. In this case, the contribution of one cell to the total Chi-square score becomes a useful way of establishing the nature of dependency.
+library(vcd)
+assoc(conting_risk_reg, shade = TRUE, las=3)
+```
+
+
+
+In Part 1 we focused on the overall risk measure and its relation to region. We are tasked with exploring the association of risk and other measures. However, this has already been covered in the visualizations and analyses in Part 1. The results are valuable, yet there is an even more insightful discovery below.
+
+For this section, we have prepared an analysis of how different types of risk influence the measure of overall risk. Thus, we use only types of risks to preduct the overall risk rating. This cannot be used in applied environments, because it presents a data leakage. In this case it is intentinal -- to show that contribution of different types of risk is not even.
+
+```{r, echo=FALSE,results='hide',message=FALSE}
+m_xgb <- joined_data %>%
+  select(-tl, -project_id, -net_commit_amt, -tl_since, -approval_fy, -grant, -region, -country, -practice, -proj_emrg_recvry_flg, -fcs_indicator, -prod_line, -project_track) %>%
+  build_model(
+    model_func = xgboost_multi, 
+    formula = risk_overall ~ . , 
+    booster = "gbtree", 
+    eval_metric = "mlogloss", 
+    watchlist_rate = 0.05, gamma = 0, max_depth = 6, 
+    min_child_weight = 1, subsample = 1, colsample_bytree = 1, 
+    learning_rate = 0.3, early_stopping_rounds = 50, nrounds = 500, 
+    test_rate = 0.3, seed = 1337)
+m_xgb_coef <- m_xgb %>% model_coef()
+m_xgb_prediction <- m_xgb %>% prediction(data = "test")
+```
+
+```{r, echo=FALSE}
+m_xgb_conf <- confusionMatrix(m_xgb_prediction$predicted_label, m_xgb_prediction$risk_overall)
+m_xgb_conf
+```
+
+```{r, echo=FALSE}
+#m_xgb_coef$importance <- format(m_xgb_coef$importance, scientific=F)
+options("scipen"=100, "digits"=4)
+p <- m_xgb_coef %>% filter(importance>0.00683778) %>% 
+  ggplot(aes(x = reorder(feature, importance), 
+             y = importance,
+             fill = importance)) +
+    coord_flip() +
+    scale_fill_gradient(low = "gray", high = "red", "Variable\nimportance") +
+    geom_bar(stat = "identity") +
+    theme_bw() +
+    xlab("Variable names") +
+    ylab("")
+ggplotly(p, tooltip=c("y"))
+```
+
+Here we observe that the #1 contributor to overall risk is institutional capacity.
+
+```{r, echo=FALSE,results='hide',message=FALSE}
+# Running Spearman correlation analysis
+j_data_corr <- j_data_corr %>% select(risk_overall, risk_environment_and_social, risk_fiduciary, risk_institutional_capacity, risk_macroeconomic, risk_political_and_governance, risk_sector_strategies_and_policies, risk_stakeholders, risk_technical_design, risk_rating_sequence) 
+var_corrs <- j_data_corr %>% 
+  do_cor(which(sapply(., is.numeric)), 
+         use = "pairwise.complete.obs", 
+         method = "spearman", 
+         distinct = FALSE, 
+         diag = TRUE)
+```
+```{r, echo=FALSE,message=FALSE}
+# Plotting
+plot_ly(x = var_corrs$pair.name.x, 
+        y = var_corrs$pair.name.y,
+        z = var_corrs$value, 
+        colorscale = list(c(0, "rgb(255, 0, 0)"), list(1, "rgb(0, 255, 0)")),
+        # colorscale = "Blues",
+        zauto = F,
+        zmin = -1,
+        zmax = 1,
+        type = "heatmap",
+        autosize = F, width = 800, height = 400)
+```
+
+
+We run the correlation analysis again to magnify the relationships between types of risk.
+
+- We indeed see that institutional capacity is the highest correlated risk with regards to overall risk at `0.63` correlation. 
+
+- It is interesting that while fudiciary risk is also rather correlated with overall risk at `0.52` correlation, it is located in the low-value cluster in XGBoost variable importance analysis above.
+
+- According to it, second and third runner-ups are political and stakeholder risks. Among with fudiciary, technical design, environment, sector strategies, and macroeconomics are less important for overall risk.
+
+- It is logical to see a positive association of `0.51` between fudiciary risk and institutional capacity. There is an assocition between in-country trustees and strong institutions, and vise versa.
+
+- Interestingly, environment risks have near-zero association with macroeconomic threats. One would expect that macro activity would threaten the environment due to means used to support it not eco-friendly for the most part.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
