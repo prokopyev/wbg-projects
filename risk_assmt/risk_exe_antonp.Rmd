@@ -299,9 +299,9 @@ m_xgb_conf
 
 We have built a model of overall risk, and the above results pertain to 30% data that was held off to test it.
 
----
-Because we tackle a multi-class classification problem (risk ranging from 1 to 4), Balanced Accuracy is the correct measure we are looking for. It considers the current class that we are calculating accuracy for to be 1 and the other classes to be 0, i.e. a one-vs-all situation. That allows for a normalized calculation of accuracy for each class.
----
+
+Because we tackle a multi-class classification problem (risk ranging from 1 to 4), `Balanced Accuracy` is the correct measure we are looking for. It considers the current class that we are calculating accuracy for to be 1 and the other classes to be 0, i.e. a one-vs-all situation. That allows for a normalized calculation of accuracy for each class.
+
 
 The results show that using XGBoost allows for a `0.69` accuracy of prediction of High risk. For both risk levels 2-3 the accuracy is `0.58`, better than random assignment. The accuracy for risk level 1 is around `0.49`. This is a good result, given that we are concerned the most with higher levels of risk. In this scenario it is more valuable to accurately predict high risks and potentially have false alarms, instead of missing a high risk completely. Moreover, there are only 11 cases of risk level 1, which is a cause of learning problems for the algorithm.
 
@@ -335,9 +335,9 @@ Lower importance:
 -	fcs_indicator: Indicates if the project is in a Fragile or Conflict Situation.
 - certain regions, countries, practices, etc.
 
----
+
 Variable importance stands for gain, the improvement in accuracy brought by a variable to the forest tree branches it is located on. The idea is that before adding a new split on a variable X to the branch there were some wrongly classified elements. After adding the split on this feature, there appear two new branches. Each of these branches is more accurate now.
----
+
 
 This again supports our previous findings, showing that some regions are better predictors of risk than others. For example, the modelling exercise confirms the above considerations that East Asia Pacific is a stronger predictor that some other regions. However, a new piece of information is that Europe and Central Asia is also noticeable.
 
