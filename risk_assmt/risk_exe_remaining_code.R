@@ -283,6 +283,7 @@ We run the correlation analysis again to magnify the relationships between types
 
 
 
+- `risk_overall` is not a linear function of other specific types of risk. Institutional capacity is a type of risk that contributes the most to the overall risk rating accoding to two disticnt measures.
 
 
 
