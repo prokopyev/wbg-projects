@@ -1,0 +1,135 @@
+---
+title: "Manaus on Shiny and Leaflet"
+author: "Anton Prokopyev"
+date: "May 29, 2018"
+output: html_document
+---
+
+```{r package loading, message=FALSE, warning=FALSE}
+rm(list=ls())
+library(data.table) 
+library(dplyr)  
+library(stringr)
+library(DT)
+
+library(sp) 
+library(rgdal)
+
+library(RColorBrewer)
+
+library(plotly)
+
+library(leaflet) 
+```
+
+```{r}
+# Read in Manaus SHP
+shp_manaus <- readOGR(dsn = "GIS Maps - WGS84 Coordinates/", layer = "CENSUS_TRACTS_MANAUS")
+
+head(shp_manaus@data)
+```
+
+```{r}
+# get the bounding box where the polygons are contained
+bbox_manaus <- shp_manaus@bbox
+# get the centroids of each polygons
+centroids_manaus <- coordinates(shp_manaus)
+
+shp_manaus_edit <- shp_manaus
+shp_manaus_edit$long_c <- centroids_manaus[,1]
+shp_manaus_edit$lat_c <- centroids_manaus[,2]
+shp_manaus_edit_data <- shp_manaus_edit@data
+
+head(shp_manaus_edit@data)
+head(shp_manaus_edit_data)
+```
+
+
+```{r}
+load("FW_DATA_Manaus_IPTU_app_-_prototype/merged_tax_census_tract_level.rda")
+
+data_census_chunk <- merged_tax_census_tract_level %>% select(1:185) 
+
+shp_manaus_edit <- merge(shp_manaus_edit, data_census_chunk,
+             by.x = "CD_GEOCODI",
+             by.y = "census_tract",
+             all.x = TRUE)
+
+ncolors <- 3000
+pal3 <- colorRampPalette(c("grey", "blue"))(ncolors) # A palette from grey to red
+
+spplot(shp_manaus_edit, c("num_properties"), main = "Num. of properties", col.regions = pal3,
+       sub = "", cuts = ncolors-1, col = "transparent")
+```
+
+```{r}
+labels <- sprintf(
+  "<strong>Census tract ID: %s</strong><br/>Number of properties: %s <br/>delinquency_2015: %s <br/>delinquency_2016: %s<br/>delinquency_2017: %s",
+  shp_manaus_edit@data$CD_GEOCODI, shp_manaus_edit@data$num_properties, shp_manaus_edit@data$delinquency_2015,
+  shp_manaus_edit@data$delinquency_2016,  shp_manaus_edit@data$delinquency_2017,big.mark = " ") %>% lapply(htmltools::HTML)
+
+
+# Create a continuous palette function
+palette_1 <- colorNumeric(palette = "Blues", domain = shp_manaus_edit@data$num_properties)
+palette_2 <- colorNumeric(palette = "Oranges", domain = shp_manaus_edit@data$delinquency_2015)
+palette_3 <- colorNumeric(palette = "Oranges", domain = shp_manaus_edit@data$delinquency_2016)
+palette_4 <- colorNumeric(palette = "Oranges", domain = shp_manaus_edit@data$delinquency_2017)
+
+lft <- leaflet(shp_manaus_edit) %>%
+  addTiles(group = "OSM") %>%
+  addPolygons(color = "#232a35", weight = 1, smoothFactor = 1,
+              opacity = 1.0, fillOpacity = 0.8,
+              fillColor = ~palette_1(num_properties),
+              highlightOptions = highlightOptions(color = "white", weight = 2,
+                                                  bringToFront = TRUE),
+              label = labels,
+              labelOptions = labelOptions(
+                style = list("font-weight" = "normal", padding = "3px 8px"),
+                textsize = "15px",
+                direction = "auto")
+           , group = "num_properties"
+           ) %>%
+  addPolygons(color = "#232a35", weight = 1, smoothFactor = 1,
+              opacity = 1.0, fillOpacity = 0.7,
+             fillColor = ~palette_2(delinquency_2015),
+              highlightOptions = highlightOptions(color = "white", weight = 2,
+                                                  bringToFront = TRUE),
+              label = labels,
+              labelOptions = labelOptions(
+                style = list("font-weight" = "normal", padding = "3px 8px"),
+                textsize = "15px",
+                direction = "auto")
+           , group = "delinquency_2015"
+              )  %>%
+  addPolygons(color = "#232a35", weight = 1, smoothFactor = 1,
+              opacity = 1.0, fillOpacity = 0.7,
+              fillColor = ~palette_3(delinquency_2016),
+              highlightOptions = highlightOptions(color = "white", weight = 2,
+                                                  bringToFront = TRUE),
+              label = labels,
+              labelOptions = labelOptions(
+                style = list("font-weight" = "normal", padding = "3px 8px"),
+                textsize = "15px",
+                direction = "auto"),
+              group = "delinquency_2016")  %>%
+  addPolygons(color = "#232a35", weight = 1, smoothFactor = 1,
+              opacity = 1.0, fillOpacity = 0.7,
+             fillColor = ~palette_4(delinquency_2017),
+              highlightOptions = highlightOptions(color = "white", weight = 2,
+                                                  bringToFront = TRUE),
+              label = labels,
+              labelOptions = labelOptions(
+                style = list("font-weight" = "normal", padding = "3px 8px"),
+                textsize = "15px",
+                direction = "auto")
+             , group = "delinquency_2017"
+             )   %>%
+#  Layers control
+  addLayersControl(
+    baseGroups = c("num_properties", "delinquency_2015", "delinquency_2016", "delinquency_2017"),
+    overlayGroups = c("OSM"),
+    options = layersControlOptions(collapsed = FALSE)
+  )
+lft
+```
+
