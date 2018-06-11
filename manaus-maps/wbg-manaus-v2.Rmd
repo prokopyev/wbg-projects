@@ -50,7 +50,7 @@ shp_manaus_edit_data <- shp_manaus_edit@data
 ```{r warning = FALSE, echo = FALSE, hide = TRUE}
 load("FW_DATA_Manaus_IPTU_app_-_prototype/merged_tax_census_tract_level.rda")
 
-data_census_chunk <- merged_tax_census_tract_level %>% select(1:185) 
+data_census_chunk <- merged_tax_census_tract_level %>% select(1:260) 
 
 shp_manaus_edit <- merge(shp_manaus_edit, data_census_chunk,
              by.x = "CD_GEOCODI",
@@ -81,20 +81,20 @@ pal3 <- colorRampPalette(c("grey", "blue"))(ncolors) # A palette from grey to re
 
 ```{r warning = FALSE, echo = FALSE}
 labels <- sprintf(
-  "<strong>Census tract ID: %s</strong><br/>num_properties: %s <br/>delin_int_2004: %s <br/>delin_int_2005: %s<br/>delin_int_2006: %s",
+  "<strong>Census tract ID: %s</strong><br/>num_properties: %s <br/>delin_int_2014: %s <br/>delin_int_2015: %s<br/>delin_int_2016: %s",
   shp_manaus_edit@data$CD_GEOCODI, 
   round(shp_manaus_edit@data$num_properties, digits = 4),
-  round(shp_manaus_edit@data$delin_int_2004, digits = 4),
-  round(shp_manaus_edit@data$delin_int_2005, digits = 4),
-  round(shp_manaus_edit@data$delin_int_2006, digits = 4),
+  round(shp_manaus_edit@data$delin_int_2014, digits = 4),
+  round(shp_manaus_edit@data$delin_int_2015, digits = 4),
+  round(shp_manaus_edit@data$delin_int_2016, digits = 4),
   big.mark = " ") %>% lapply(htmltools::HTML)
 
 
 # Create a continuous palette function
 palette_1 <- colorNumeric(palette = "Blues", domain = shp_manaus_edit@data$num_properties)
-palette_2 <- colorNumeric(palette = "Oranges", domain = shp_manaus_edit@data$delin_int_2004)
-palette_3 <- colorNumeric(palette = "Oranges", domain = shp_manaus_edit@data$delin_int_2005)
-palette_4 <- colorNumeric(palette = "Oranges", domain = shp_manaus_edit@data$delin_int_2006)
+palette_2 <- colorNumeric(palette = "Oranges", domain = shp_manaus_edit@data$delin_int_2014)
+palette_3 <- colorNumeric(palette = "Oranges", domain = shp_manaus_edit@data$delin_int_2015)
+palette_4 <- colorNumeric(palette = "Oranges", domain = shp_manaus_edit@data$delin_int_2016)
 
 lft <- leaflet(shp_manaus_edit) %>%
   addTiles(group = "OSM") %>%
@@ -112,7 +112,7 @@ lft <- leaflet(shp_manaus_edit) %>%
            ) %>%
   addPolygons(color = "#232a35", weight = 1, smoothFactor = 1,
               opacity = 1.0, fillOpacity = 0.7,
-             fillColor = ~palette_2(delin_int_2004),
+             fillColor = ~palette_2(delin_int_2014),
               highlightOptions = highlightOptions(color = "white", weight = 2,
                                                   bringToFront = TRUE),
               label = labels,
@@ -120,11 +120,11 @@ lft <- leaflet(shp_manaus_edit) %>%
                 style = list("font-weight" = "normal", padding = "3px 8px"),
                 textsize = "15px",
                 direction = "auto")
-           , group = "delin_int_2004"
+           , group = "delin_int_2014"
               )  %>%
   addPolygons(color = "#232a35", weight = 1, smoothFactor = 1,
               opacity = 1.0, fillOpacity = 0.7,
-              fillColor = ~palette_3(delin_int_2005),
+              fillColor = ~palette_3(delin_int_2015),
               highlightOptions = highlightOptions(color = "white", weight = 2,
                                                   bringToFront = TRUE),
               label = labels,
@@ -132,10 +132,10 @@ lft <- leaflet(shp_manaus_edit) %>%
                 style = list("font-weight" = "normal", padding = "3px 8px"),
                 textsize = "15px",
                 direction = "auto"),
-              group = "delin_int_2005")  %>%
+              group = "delin_int_2015")  %>%
   addPolygons(color = "#232a35", weight = 1, smoothFactor = 1,
               opacity = 1.0, fillOpacity = 0.7,
-             fillColor = ~palette_4(delin_int_2006),
+             fillColor = ~palette_4(delin_int_2016),
               highlightOptions = highlightOptions(color = "white", weight = 2,
                                                   bringToFront = TRUE),
               label = labels,
@@ -143,28 +143,28 @@ lft <- leaflet(shp_manaus_edit) %>%
                 style = list("font-weight" = "normal", padding = "3px 8px"),
                 textsize = "15px",
                 direction = "auto")
-             , group = "delin_int_2006"
+             , group = "delin_int_2016"
              )   %>%
   # Add Legends
     addLegend(values = shp_manaus_edit@data$num_properties, group = "num_properties", pal = palette_1,
               position = "bottomleft") %>%
-    addLegend(values = shp_manaus_edit@data$delin_int_2004, group = "delin_int_2014", pal = palette_2,
+    addLegend(values = shp_manaus_edit@data$delin_int_2014, group = "delin_int_2014", pal = palette_2,
               position = "bottomleft") %>%
-    # addLegend(values = shp_manaus_edit@data$delin_int_2005, group = "delin_int_2015", pal = palette_3,
+    # addLegend(values = shp_manaus_edit@data$delin_int_2015, group = "delin_int_2015", pal = palette_3,
     #           position = "bottomleft") %>%
-    # addLegend(values = shp_manaus_edit@data$delin_int_2006, group = "delin_int_2016", pal = palette_4,
+    # addLegend(values = shp_manaus_edit@data$delin_int_2016, group = "delin_int_2016", pal = palette_4,
     #           position = "bottomleft") %>%
   #  Layers control
   addLayersControl(
     baseGroups = c("num_properties",
-                   "delin_int_2004", 
-                   "delin_int_2005", 
-                   "delin_int_2006"),
+                   "delin_int_2014", 
+                   "delin_int_2015", 
+                   "delin_int_2016"),
     overlayGroups = c("OSM"),
     options = layersControlOptions(collapsed = FALSE)
   ) %>% 
-  # hideGroup(c("delin_int_2005", 
-  #                  "delin_int_2006")) %>%
+  # hideGroup(c("delin_int_2015", 
+  #                  "delin_int_2016")) %>%
                setView(lat = -3.1190, 
                        lng = -60.0217,
                        zoom = 12) %>%
