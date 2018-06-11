@@ -1,11 +1,11 @@
 ---
-title: "Manaus on Shiny and Leaflet"
-author: "Anton Prokopyev"
-date: "May 29, 2018"
+title: "Manaus: An Interactive Prototype"
+author: "Anton Prokopyev, The World Bank"
+date: "June 10, 2018"
 output: html_document
 ---
 
-```{r package loading, message=FALSE, warning=FALSE}
+```{r package loading, message=FALSE, warning=FALSE, echo = FALSE, hide = TRUE}
 rm(list=ls())
 library(data.table) 
 library(dplyr)  
@@ -20,16 +20,18 @@ library(RColorBrewer)
 library(plotly)
 
 library(leaflet) 
+library(leaflet.extras)
 ```
 
-```{r}
+```{r warning = FALSE, echo = FALSE, hide = TRUE}
 # Read in Manaus SHP
-shp_manaus <- readOGR(dsn = "GIS Maps - WGS84 Coordinates/", layer = "CENSUS_TRACTS_MANAUS")
+shp_manaus <- readOGR(dsn = "GIS Maps - WGS84 Coordinates/", layer = "CENSUS_TRACTS_MANAUS",
+                      verbose = FALSE)
 
-head(shp_manaus@data)
+# head(shp_manaus@data)
 ```
 
-```{r}
+```{r warning = FALSE, echo = FALSE, hide = TRUE}
 # get the bounding box where the polygons are contained
 bbox_manaus <- shp_manaus@bbox
 # get the centroids of each polygons
@@ -40,12 +42,12 @@ shp_manaus_edit$long_c <- centroids_manaus[,1]
 shp_manaus_edit$lat_c <- centroids_manaus[,2]
 shp_manaus_edit_data <- shp_manaus_edit@data
 
-head(shp_manaus_edit@data)
-head(shp_manaus_edit_data)
+# head(shp_manaus_edit@data)
+# head(shp_manaus_edit_data)
 ```
 
 
-```{r}
+```{r warning = FALSE, echo = FALSE, hide = TRUE}
 load("FW_DATA_Manaus_IPTU_app_-_prototype/merged_tax_census_tract_level.rda")
 
 data_census_chunk <- merged_tax_census_tract_level %>% select(1:185) 
@@ -58,22 +60,41 @@ shp_manaus_edit <- merge(shp_manaus_edit, data_census_chunk,
 ncolors <- 3000
 pal3 <- colorRampPalette(c("grey", "blue"))(ncolors) # A palette from grey to red
 
-spplot(shp_manaus_edit, c("num_properties"), main = "Num. of properties", col.regions = pal3,
-       sub = "", cuts = ncolors-1, col = "transparent")
+# spplot(shp_manaus_edit, c("num_properties"), main = "Num. of properties", col.regions = pal3,
+#        sub = "", cuts = ncolors-1, col = "transparent")
 ```
 
-```{r}
+```{r warning = FALSE, echo = FALSE, hide = TRUE}
+# Chunk for checking NaN values for some census tracts
+
+# data_census_chunk %>% 
+#   filter(census_tract == 130260305120050) %>% 
+#   summarize(delinquency_2017)
+# 
+# data_census_chunk$delinquency_2017[data_census_chunk$census_tract==130260305120050]
+# 
+# data_census_chunk[data_census_chunk$census_tract==130260305120050,]
+
+# merged_tax_census_tract_level[data_census_chunk$census_tract==130260305120050,]
+```
+
+
+```{r warning = FALSE, echo = FALSE}
 labels <- sprintf(
-  "<strong>Census tract ID: %s</strong><br/>Number of properties: %s <br/>delinquency_2015: %s <br/>delinquency_2016: %s<br/>delinquency_2017: %s",
-  shp_manaus_edit@data$CD_GEOCODI, shp_manaus_edit@data$num_properties, shp_manaus_edit@data$delinquency_2015,
-  shp_manaus_edit@data$delinquency_2016,  shp_manaus_edit@data$delinquency_2017,big.mark = " ") %>% lapply(htmltools::HTML)
+  "<strong>Census tract ID: %s</strong><br/>num_properties: %s <br/>delinquency_2014: %s <br/>delinquency_2015: %s<br/>delinquency_2016: %s",
+  shp_manaus_edit@data$CD_GEOCODI, 
+  round(shp_manaus_edit@data$num_properties, digits = 4),
+  round(shp_manaus_edit@data$delinquency_2014, digits = 4),
+  round(shp_manaus_edit@data$delinquency_2015, digits = 4),
+  round(shp_manaus_edit@data$delinquency_2016, digits = 4),
+  big.mark = " ") %>% lapply(htmltools::HTML)
 
 
 # Create a continuous palette function
 palette_1 <- colorNumeric(palette = "Blues", domain = shp_manaus_edit@data$num_properties)
-palette_2 <- colorNumeric(palette = "Oranges", domain = shp_manaus_edit@data$delinquency_2015)
-palette_3 <- colorNumeric(palette = "Oranges", domain = shp_manaus_edit@data$delinquency_2016)
-palette_4 <- colorNumeric(palette = "Oranges", domain = shp_manaus_edit@data$delinquency_2017)
+palette_2 <- colorNumeric(palette = "Oranges", domain = shp_manaus_edit@data$delinquency_2014)
+palette_3 <- colorNumeric(palette = "Oranges", domain = shp_manaus_edit@data$delinquency_2015)
+palette_4 <- colorNumeric(palette = "Oranges", domain = shp_manaus_edit@data$delinquency_2016)
 
 lft <- leaflet(shp_manaus_edit) %>%
   addTiles(group = "OSM") %>%
@@ -91,7 +112,7 @@ lft <- leaflet(shp_manaus_edit) %>%
            ) %>%
   addPolygons(color = "#232a35", weight = 1, smoothFactor = 1,
               opacity = 1.0, fillOpacity = 0.7,
-             fillColor = ~palette_2(delinquency_2015),
+             fillColor = ~palette_2(delinquency_2014),
               highlightOptions = highlightOptions(color = "white", weight = 2,
                                                   bringToFront = TRUE),
               label = labels,
@@ -99,11 +120,11 @@ lft <- leaflet(shp_manaus_edit) %>%
                 style = list("font-weight" = "normal", padding = "3px 8px"),
                 textsize = "15px",
                 direction = "auto")
-           , group = "delinquency_2015"
+           , group = "delinquency_2014"
               )  %>%
   addPolygons(color = "#232a35", weight = 1, smoothFactor = 1,
               opacity = 1.0, fillOpacity = 0.7,
-              fillColor = ~palette_3(delinquency_2016),
+              fillColor = ~palette_3(delinquency_2015),
               highlightOptions = highlightOptions(color = "white", weight = 2,
                                                   bringToFront = TRUE),
               label = labels,
@@ -111,10 +132,10 @@ lft <- leaflet(shp_manaus_edit) %>%
                 style = list("font-weight" = "normal", padding = "3px 8px"),
                 textsize = "15px",
                 direction = "auto"),
-              group = "delinquency_2016")  %>%
+              group = "delinquency_2015")  %>%
   addPolygons(color = "#232a35", weight = 1, smoothFactor = 1,
               opacity = 1.0, fillOpacity = 0.7,
-             fillColor = ~palette_4(delinquency_2017),
+             fillColor = ~palette_4(delinquency_2016),
               highlightOptions = highlightOptions(color = "white", weight = 2,
                                                   bringToFront = TRUE),
               label = labels,
@@ -122,14 +143,33 @@ lft <- leaflet(shp_manaus_edit) %>%
                 style = list("font-weight" = "normal", padding = "3px 8px"),
                 textsize = "15px",
                 direction = "auto")
-             , group = "delinquency_2017"
+             , group = "delinquency_2016"
              )   %>%
-#  Layers control
+  # Add Legends
+    addLegend(values = shp_manaus_edit@data$num_properties, group = "num_properties", pal = palette_1,
+              position = "bottomleft") %>%
+    addLegend(values = shp_manaus_edit@data$delinquency_2014, group = "delinquency_2014", pal = palette_2,
+              position = "bottomleft") %>%
+    # addLegend(values = shp_manaus_edit@data$delinquency_2015, group = "delinquency_2015", pal = palette_3,
+    #           position = "bottomleft") %>%
+    # addLegend(values = shp_manaus_edit@data$delinquency_2016, group = "delinquency_2016", pal = palette_4,
+    #           position = "bottomleft") %>%
+  #  Layers control
   addLayersControl(
-    baseGroups = c("num_properties", "delinquency_2015", "delinquency_2016", "delinquency_2017"),
+    baseGroups = c("num_properties",
+                   "delinquency_2014", 
+                   "delinquency_2015", 
+                   "delinquency_2016"),
     overlayGroups = c("OSM"),
     options = layersControlOptions(collapsed = FALSE)
-  )
+  ) %>% 
+  # hideGroup(c("delinquency_2015", 
+  #                  "delinquency_2016")) %>%
+               setView(lat = -3.1190, 
+                       lng = -60.0217,
+                       zoom = 12) %>%
+  addFullscreenControl(position = "bottomright")
+
 lft
 ```
 
