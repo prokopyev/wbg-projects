@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Latent Dirichlet Allocation Viz</title>
+    <script src="d3.v3.js"></script>
+    <script src="ldavis.js"></script>
+    <link rel="stylesheet" type="text/css" href="lda.css">
+  </head>
+
+  <body>
+    <font face="arial, sans-serif" size="6">Sao Tome and Principe mentions on Twitter</font>  <br />
+    <font face="arial, sans-serif" size="4">Latent Dirichlet Allocation Topic Modelling</font>  <br />
+    <font face="arial, sans-serif" size="1">
+    10,000 obs. random sample from a total of 183,211 tweets during 2008-2018</font>  <br />
+    <font face="arial, sans-serif" size="1">
+    World Bank, 2018</font>  <br />
+    </font>
+    <div id = "lda"></div>
+    <script>
+      var vis = new LDAvis("#lda", "lda.json");
+    </script>
+  </body>
+
+</html>
